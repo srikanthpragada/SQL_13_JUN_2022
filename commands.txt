@@ -1,0 +1,33 @@
+16-JUN-2022
+===========
+
+Assignments
+------------
+1. Add column Gender to Employees table. Make sure it contains only M or F.
+
+2. Try to drop JOBS table 
+
+3. Display unique salaries from employees
+
+4. Display fullname, salary, hra @ 20%, da % 15 for employees and give column names HRA and DA.
+
+5. select id, name, job, department and new salary for all employees 
+by assuming a salary increase of 10% 
+
+
+commands
+----------
+select * from employees
+
+select  fullname, salary  
+from employees
+
+select fullname, salary, salary * .5  Bonus
+from employees
+
+select fullname, salary, salary * .5  Festival_Bonus
+from employees
+
+select distinct job_id
+from employees
+
