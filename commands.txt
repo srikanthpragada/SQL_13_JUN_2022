@@ -31,3 +31,85 @@ from employees
 select distinct job_id
 from employees
 
+
+20-JUN-2022
+===========
+Assignments
+------------
+Disp emp where id > 5 and salary < 600000
+
+Disp emp who are doing job PR
+
+Disp emp with id 3, 5, 6
+
+Disp departments where name ends with s
+
+Disp employees who have letter a twice in their name 
+
+Disp employees in the order of joinedon
+
+Disp employees in the desc of job and in that asc order of salry 
+
+Disp employees in sorted order of salary and eliminate employees without job id
+
+
+
+commands
+----------
+select *
+from employees
+where id = 3
+
+select *
+from employees
+where salary > 500000
+
+select *
+from employees
+where salary < 800000  and department_id = 'IT'
+
+select *
+from employees
+where salary > 800000 or salary < 500000
+
+insert into employees(fullname, email,department_id,salary,joinedon)
+     values('Van Rossum','van@microsoft.com','IT',950000, '2022-04-10');
+
+select * 
+from employees
+where job_id = null 
+
+select * 
+from employees
+where job_id is null 
+
+select  10 * null
+
+
+select  *
+from employees
+where job_id = 'pr'
+
+select  *
+from employees
+where job_id like 'p%'
+
+SELECT * FROM EMPLOYEES
+ORDER BY job_id
+
+SELECT * 
+FROM EMPLOYEES
+ORDER BY salary desc
+
+SELECT * 
+FROM EMPLOYEES
+ORDER BY department_id, salary desc
+
+SELECT * 
+FROM EMPLOYEES
+where department_id = 'IT'
+ORDER BY salary 
+
+SELECT fullname, salary * 1.2 
+FROM EMPLOYEES
+ORDER BY  2

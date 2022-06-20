@@ -59,6 +59,10 @@ insert into employees(fullname, email, job_id, department_id,salary, joinedon)
      values('Larry Page','page@gmail.com','TL','IT',1550000, '2022-02-10');
 
 
+insert into employees(fullname, email,department_id,salary,joinedon)
+     values('Van Rossum','van@microsoft.com','IT',950000, '2022-04-10');
+     
+
 CREATE TABLE payroll (
     employee_id   INTEGER  References employees(id),
     paidon        date,
