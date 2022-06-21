@@ -48,9 +48,10 @@ Disp employees who have letter a twice in their name
 
 Disp employees in the order of joinedon
 
-Disp employees in the desc of job and in that asc order of salry 
+Disp employees in the desc of job and in that asc order of salary 
 
 Disp employees in sorted order of salary and eliminate employees without job id
+
 
 
 
@@ -113,3 +114,45 @@ ORDER BY salary
 SELECT fullname, salary * 1.2 
 FROM EMPLOYEES
 ORDER BY  2
+
+
+21-JUN-2022
+===========
+
+Assignments
+------------
+Update job of emp to PR where job is null
+
+Delete emp where salary < 500000 and dept is IT
+
+Insert new row into Departments with id - SE and name Security
+
+delete employee 4 by using a transaction and roll it back
+
+
+
+
+Commands
+----------
+SELECT *
+FROM EMPLOYEES
+ORDER by job_id desc, salary
+
+SELECT *
+FROM EMPLOYEES
+where job_id is not null 
+ORDER by salary
+
+update employees 
+  set salary = salary * 1.1
+where id = 2
+
+update employees 
+  set salary = salary * 1.1, job_id = 'SP'
+where id = 3
+
+
+update employees 
+  set salary = salary * 1.1, job_id = 'AA'
+where id = 3
+
