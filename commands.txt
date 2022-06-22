@@ -156,3 +156,72 @@ update employees
   set salary = salary * 1.1, job_id = 'AA'
 where id = 3
 
+
+22-JUN-2022
+============
+
+Assignments
+------------
+Display lastname in fullname 
+
+Convert employees names to uppercase 
+
+Disp employee where name contains letter i after 5th position.
+
+Disp employees who joined in 2020
+
+Disp employees who joined after 6th month.
+
+Disp emp name and new salary, which is 10% on current salary if salary < 500000
+otherwise 5%
+
+Disp leaves that were taken in the first qrt of the year.
+
+Disp leave taken in the last 6 months.
+
+Disp employees where dept id is having more than 2 chars.
+
+
+
+
+
+
+
+
+Commands
+---------
+begin transaction;
+delete from leaves 
+where employee_id = 4;
+delete from payroll
+where employee_id = 4;
+delete from employees
+where employee_id = 4;
+rollback;
+
+
+SELECT rtrim('    Abc  xyz....****','*.')
+
+SELECT fullname, substr(fullname,5)
+from employees
+
+SELECT fullname, instr(fullname, 'a')
+from employees
+
+select  joinedon, strftime('%Y-%m', joinedon)
+from employees
+
+select  joinedon, julianday(date()) - julianday(joinedon)  Days
+from employees
+
+SELECT FULLNAME, IIF(SALARY > 500000,'HIGH','LOW')
+FROM EMPLOYEES
+order by 2
+
+SELECT *
+FROM EMPLOYEES
+where strftime('%m', joinedon)  = '02'
+
+SELECT *
+FROM EMPLOYEES
+where cast(strftime('%m', joinedon) as int) = 2
