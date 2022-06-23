@@ -225,3 +225,105 @@ where strftime('%m', joinedon)  = '02'
 SELECT *
 FROM EMPLOYEES
 where cast(strftime('%m', joinedon) as int) = 2
+
+
+23-JUN-2022
+============
+
+Assignments
+------------
+Disp how many employees have salary > 500000
+
+Disp the difference between min and max salaries in each dept
+
+Disp how many leaves each emp has taken in the current year
+
+Disp avg salary paid to each employee 
+
+Disp highest joining date
+
+Disp employees who have taken just 1 leave so far
+
+Disp jobs where avg salary > 500000
+
+Disp total hra paid in each month to all employees
+
+
+
+Commands
+---------
+select avg(salary)
+from employees
+
+select avg(salary)
+from employees
+where job_id = 'PR'
+
+select count(*)
+from employees
+
+select count(job_id)
+from employees
+
+select count(*), max(salary), min(salary)
+from employees
+
+select count(distinct job_id)
+from employees
+
+select sum(salary), total(salary)
+from employees
+where job_id = 'DB'
+
+select  department_id, avg(salary)
+from employees
+group by department_id
+
+select  job_id, max(salary)
+from employees
+where job_id is not null
+group by job_id
+
+select  department_id, count(*)
+from employees
+group by department_id
+order by 2
+
+select department_id, count(*)
+from employees
+where salary > 500000
+group by department_id
+order by 2
+
+select employee_id, count(*)
+from leaves
+group by employee_id
+
+select employee_id, count(*)
+from leaves
+group by employee_id
+having count(*) > 2
+
+select department_id, avg(salary)
+from employees
+where salary > 500000
+group by department_id
+having count(*) > 1
+order by 1
+
+
+select strftime('%Y', joinedon) Year, count(*) count
+from employees
+group by strftime('%Y', joinedon)
+
+select * 
+from employees
+where instr(fullname, 'i') > 5
+
+select fullname, substr(fullname,instr(fullname, ' ') + 1)
+from employees
+
+select  substr('Andy',instr('Andy', ' ') + 1)
+
+select iif(instr('Andy Gore', ' ') = 0, null, 
+       substr('Andy Gore',instr('Andy Gore', ' ') + 1)) LastName 
