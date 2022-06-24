@@ -1,0 +1,102 @@
+PUBLISHERS
+=========
+
+drop table publishers;
+
+create table publishers
+(
+ id      integer     primary key autoincrement,
+ name    varchar(30) not null,
+ email   varchar(50) unique,
+ phone   varchar(10) unique
+);
+
+
+insert into publishers (name, email,phone) values ('wrox','contact@wrox.com', '393939222');
+insert into publishers (name, email,phone) values ('apress','contact@apress.com', '847473334');
+insert into publishers (name, email,phone) values ('manning','contact@manning.com', '7464633243');
+insert into publishers (name, email,phone) values ('McGraw Hill','contact@mcgrawhill.com', '343434343');
+
+
+AUTHORS
+=========
+drop table authors;
+
+create table authors
+(
+ id      integer  primary key autoincrement,
+ name    varchar(30) not null,
+ email   varchar(50) unique,
+ phone   varchar(10) unique
+);
+
+insert into authors (name, email,phone) values ('Jessy Liberty','jessy@gmail.com', '873772222');
+insert into authors (name, email,phone) values ('Dan Appleman','appleman@gmail.com', '382727222');
+insert into authors (name, email,phone) values ('Scott Allen','scott@scottallen.org', '3362626223');
+insert into authors (name, email,phone) values ('Peter Norton','norton@yahoo.com', '666263333');
+insert into authors (name, email,phone) values ('Herbert Schildt','herbert@gmail.com', '343434222');
+
+TOPICS
+=========
+
+drop table topics;
+
+create table topics
+(
+ id      integer  primary key autoincrement,
+ name    varchar(30) not null
+);
+
+insert into topics (name) values ('Java');
+insert into topics (name) values ('Python');
+insert into topics (name) values ('.NET');
+insert into topics (name) values ('Oracle');
+
+create table titles
+(
+ isbn           integer     primary key autoincrement,
+ title          varchar(30) not null,
+ publisher_id   integer     references publishers(id),
+ topic_id       integer     references topics(id),
+ release_date   date,
+ cover_type     char(1)     check (cover_type in ('h','p')),
+ price          integer     check (price >= 0)
+);
+
+insert into titles (title, publisher_id, topic_id, release_date,cover_type,price)
+            values ('Java Complete Reference',4,1,'2020-10-11','p',560);
+
+insert into titles (title, publisher_id, topic_id, release_date,cover_type,price)
+            values ('Programming C# ',2,3,'2021-05-11','p',450);
+
+insert into titles (title, publisher_id, topic_id, release_date,cover_type,price)
+            values ('Building Web Apps using ASP.NET',2,3,'2021-05-11','p',450);
+
+insert into titles (title, publisher_id, topic_id, release_date,cover_type,price)
+            values ('Fluent Python',3,2,'2022-01-05','h',850);
+
+insert into titles (title, publisher_id, topic_id, release_date,cover_type,price)
+            values ('Oracle for Beginners',1,4,'2022-03-10','h',750);
+
+insert into titles (title, publisher_id, topic_id, release_date,cover_type,price)
+            values ('Spring Boot',3,1,'2022-03-15','p',600);
+
+
+create table title_authors
+(
+   isbn           integer  references titles (isbn),
+   author_id      integer  references authors(id),
+   primary key (isbn, author_id)
+)
+
+insert into title_authors  values(1,5);
+insert into title_authors  values(2,1)insert into title_authors  values(2,1);
+insert into title_authors  values(3,2);
+insert into title_authors  values(3,3);
+insert into title_authors  values(4,3);
+insert into title_authors  values(5,4);
+insert into title_authors  values(6,1);
+insert into title_authors  values(6,5);
+
+
+

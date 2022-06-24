@@ -327,3 +327,54 @@ select  substr('Andy',instr('Andy', ' ') + 1)
 
 select iif(instr('Andy Gore', ' ') = 0, null, 
        substr('Andy Gore',instr('Andy Gore', ' ') + 1)) LastName 
+
+
+24-JUN-2022
+===========
+Assignements
+============
+Disp emp name and leave date from all leaves
+
+Disp emp name, leave date for all sick leaves 
+
+Disp emp name, dept name, basic salary and paidon 
+
+Disp emp name and total no. of leaves taken by emp
+
+Disp dept name and no. of employees
+
+Disp job titles where avg salary > 600000
+
+
+Commands
+==========
+select fullname, title
+from employees e join jobs j
+on e.job_id = j.id 
+
+
+select fullname, salary, name dept
+from employees e join departments d
+on e.department_id = d.id 
+
+select fullname, salary, name dept
+from employees e join departments d
+on e.department_id = d.id 
+where salary > 800000
+
+select e.id, fullname, salary, d.id as dept_id, name dept
+from employees e join departments d
+on e.department_id = d.id 
+
+
+select e.id, fullname, salary, title job_title, name as dept_name
+from employees e join departments d on e.department_id = d.id 
+     join jobs j on e.job_id  = j.id 
+
+
+select name, avg(salary)
+from employees e join departments d on e.department_id = d.id
+group by name
+
+
+
