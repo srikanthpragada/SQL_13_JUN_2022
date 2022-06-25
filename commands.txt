@@ -377,4 +377,120 @@ from employees e join departments d on e.department_id = d.id
 group by name
 
 
+25-JUN-2022
+===========
 
+Assignements
+============
+Disp dept name, avg salary for all dept with or without employees
+
+Disp employee name, leavedate and type of leave and include employees who did not 
+take leave
+
+Disp employee with highest salary
+
+Disp departments where we have more than 2 employees 
+
+Disp leaves taken by employees where emp name start with S and dept name starts with S.
+
+Disp dept in which no emp took leave
+
+
+
+Commands
+========
+select title, fullname
+from jobs j left outer join employees e on e.job_id = j.id
+order by 1
+
+select title, count(fullname)
+from jobs j left outer join employees e on e.job_id = j.id
+group by title
+
+select fullname, count(leavedate)
+from employees e left outer join leaves l on e.id = l.employee_id
+group by fullname
+
+
+select id
+from departments
+where name = 'Accounts'
+
+select * 
+from employees
+where department_id = 'AC'
+
+select * 
+from employees
+where department_id = 
+ (
+   select id
+   from departments
+   where name = 'Accounts'
+)
+
+select * 
+from departments
+where id in 
+( select department_id
+  from employees
+  where salary > 500000 )
+
+
+select * 
+from departments
+where id in 
+( select department_id
+  from employees
+  where salary < 500000 )
+
+
+select * 
+from departments
+where id in 
+( select department_id
+  from employees
+  where strftime('%Y',joinedon) = strftime('%Y',date())
+  )
+
+select * 
+from departments
+where id not in 
+( select department_id
+  from employees
+  where strftime('%Y',joinedon) = strftime('%Y',date())
+  )
+
+// Doesn't work 
+
+select * 
+from departments
+where id in 
+( select department_id
+  from employees
+  where strftime('%Y',joinedon) <> strftime('%Y',date())
+)  
+
+
+select * 
+from employees
+where salary >
+( select avg(salary)
+  from employees
+)
+
+
+select fullname, name
+from employees e join departments d on d.id = e.department_id
+where e.id not in
+( select employee_id
+  from leaves
+)
+ 
+SELECT * 
+FROM LEAVES
+WHERE EMPLOYEE_ID IN
+  (SELECT ID FROM EMPLOYEES
+   WHERE DEPARTMENT_ID IN
+      (SELECT ID FROM DEPARTMENTS WHERE NAME LIKE 'A%')
+  )
