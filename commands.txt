@@ -566,7 +566,6 @@ where salary  =
     where department_id = emp.department_id)
 
 
-
 select salary
 from employees
 order by salary desc
@@ -585,3 +584,48 @@ where id in
  order by avg(salary) desc
  limit 2)
 
+
+28-JUN-2022
+===========
+
+
+
+Assignments
+===========
+
+
+Commands
+=========
+
+create view it_employees
+as
+select * from employees
+where department_id = 'IT';
+
+select * from it_employees
+
+
+create view dept_summary
+as
+select name, count(*) emp_count, max(salary) max_salary, min(salary) min_salary
+from employees e join departments d on e.department_id = d.id 
+group by d.name 
+
+select * from dept_summary
+where emp_count > 1
+
+
+create view emp
+as
+select id, fullname, job_id, department_id, salary, 
+   cast(strftime('%Y',joinedon) as int) year
+from employees;
+
+select fullname, year
+from emp
+
+
+drop view it_employees
+
+create index emp_fullname_idx
+on employees(fullname)
